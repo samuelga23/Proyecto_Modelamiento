@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicción del Nivel de Agua</title>
+    <link rel="stylesheet" href="frontend/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌊 Predicción del Nivel de Agua</h1>
+            <p>Sistema inteligente para reservorios pluviales</p>
+        </div>
+        <div class="main-content">
+            <div class="input-section">
+                <h2 class="section-title">⚙️ Parámetros del Sistema</h2>
+                <form id="reservoirForm">
+                    <div class="form-group">
+                        <label for="maxCapacity">Capacidad Máxima (m³)</label>
+                        <input type="number" id="maxCapacity" name="maxCapacity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="currentLevel">Nivel Actual (m³)</label>
+                        <input type="number" id="currentLevel" name="currentLevel" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="catchmentArea">Área de Captación (m²)</label>
+                        <input type="number" id="catchmentArea" name="catchmentArea" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="outflowRate">Caudal de Salida (L/min)</label>
+                        <input type="number" id="outflowRate" name="outflowRate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rainDuration">Duración de la Lluvia (horas)</label>
+                        <input type="number" id="rainDuration" name="rainDuration" min="0" step="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Intensidades de Lluvia por Intervalo (mm/h)</label>
+                        <div id="intervalInputs">
+                            <!-- Los intervalos de 1 hora se generarán dinámicamente aquí -->
+                        </div>
+                    </div>
+                    <button type="submit" class="btn" id="simulateBtn">🔍 Ejecutar Simulación</button>
+                </form>
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Ejecutando cálculos numéricos...</p>
+                </div>
+            </div>
+            <div class="results-section" id="results">
+                <h2 class="section-title">📊 Resultados y Análisis</h2>
+                <div id="alerts"></div>
+                <div class="chart-container">
+                    <canvas id="waterLevelChart"></canvas>
+                </div>
+                <div id="recommendations"></div>
+            </div>
+            <div class="initial-message" id="initialMessage">
+                <p>💡 Ingresa los parámetros del reservorio y ejecuta la simulación para ver los resultados.</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="frontend/script.js"></script>
+</body>
+</html>
