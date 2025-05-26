@@ -7,7 +7,6 @@ V_uncap  = zeros(size(t_full));
 V_uncap(1) = V0;
 for i = 2:length(t_full)
     q_in_i = lluvia_fn(t_full(i-1)) * A_cap / (60 * 1000); % Convertir mm/h a m³/min
-    % fprintf('t=%f, q_in=%f, V_uncap=%f\n', t_full(i-1), q_in_i, V_uncap(i-1)); % Depuración
     dVdt_uncap = q_in_i - Q_out;
     V_uncap(i) = V_uncap(i-1) + dVdt_uncap * dt;
 end
